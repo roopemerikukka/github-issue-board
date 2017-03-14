@@ -1,0 +1,72 @@
+.issue {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 4px;
+  position: relative;
+  /* border-bottom: 1px solid #eaeaea; */
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+
+  .issue__number {
+    position: relative;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+    background-color: #5d5d5d;
+    color: white;
+    vertical-align: middle;
+    border-radius: 100%;
+    margin-right: 12px;
+    user-select: none;
+  }
+
+    .issue__number .hash {
+      display: none;
+    }
+
+  @media screen and (min-width: 720px) {
+    .issue__number {
+      width: 60px;
+      height: 60px;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .issue__number .hash {
+      display: inline;
+      font-size: 14px;
+    }
+  }
+
+  .issue--assigned .issue__number {
+    background-color: #2ecc71;
+  }
+
+  .issue__number div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .issue__content {
+    flex-grow: 1;
+  }
+
+    .issue__title {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .issue__labels {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+      .issue__label {
+        display: inline-block;
+      }

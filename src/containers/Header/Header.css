@@ -1,0 +1,34 @@
+header.app-header {
+  position: relative;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: #eaeaea 0px 1px 6px,
+              #eaeaea 0px 1px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+  .app-header .app-identifiers {
+    flex-grow: 1;
+    font-family: 'sofia-pro', 'Raleway Medium', sans-serif;
+  }
+
+    .app-header .app-identifiers a {
+      text-decoration: none;
+    }
+
+      .app-header .app-identifiers h1 {
+        margin-left: 24px;
+        color: black;
+      }
+
+
+
+.app-header .icon {
+  font-size: 24px;
+  line-height: 24px;
+  padding: 6px;
+  margin-right: 12px;
+  vertical-align: middle;
+  color: black;
+}

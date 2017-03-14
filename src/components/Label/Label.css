@@ -1,0 +1,9 @@
+.label {
+  font-family: 'Raleway Light', sans-serif;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-right: 4px;
+  user-select: none;
+}

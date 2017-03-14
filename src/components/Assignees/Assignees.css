@@ -1,0 +1,23 @@
+.assignees {
+  list-style: none;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+  .assignee {
+    display: inline-block;
+    transform: translateX(50%);
+  }
+
+  .assignee:last-child {
+    transform: none;
+  }
+
+    .assignee__img {
+      display: block;
+      width: 36px;
+      height: 36px;
+      border-radius: 36px;
+    }

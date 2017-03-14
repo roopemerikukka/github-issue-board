@@ -1,0 +1,42 @@
+/* Thinnest */
+@font-face {
+  font-family: 'Raleway Thin';
+  src:  url('./raleway/raleway-thin.woff2') format('woff2'),
+        url('./raleway/raleway-thin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway Extra Light';
+  src:  url('./raleway/raleway-extralight.woff2') format('woff2'),
+        url('./raleway/raleway-extralight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway Light';
+  src:  url('./raleway/raleway-light.woff2') format('woff2'),
+        url('./raleway/raleway-light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Raleway Regular';
+  src:  url('./raleway/raleway-regular.woff2') format('woff2'),
+        url('./raleway/raleway-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Boldest */
+@font-face {
+  font-family: 'Raleway Medium';
+  src:  url('./raleway/raleway-medium.woff2') format('woff2'),
+        url('./raleway/raleway-medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

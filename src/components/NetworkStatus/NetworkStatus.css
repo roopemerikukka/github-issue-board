@@ -1,0 +1,17 @@
+.c-network-status {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  transition: all .5s;
+}
+
+.c-network-status--online {
+  background-color: transparent;
+}
+
+.c-network-status--offline {
+  background-color: #F62459;
+  height: 6px;
+}

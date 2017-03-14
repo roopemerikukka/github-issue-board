@@ -1,0 +1,30 @@
+.repolist {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+  .repolist__item {
+    width: 100%;
+    padding: 12px;
+  }
+
+  @media screen and (min-width: 800px) {
+    .repolist {
+      margin: 24px 0;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .repolist__item {
+      width: 50%;
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .repolist__item {
+      width: 33.333%;
+    }
+  }
