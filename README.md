@@ -8,7 +8,24 @@ The application is hosted [here](https://issues.roo.pe) and you can start using 
 
 ## Development
 
-*This section will eventually contain development instructions...*
+### Requirements
+1. You need to register an application to your GitHub account. You can do it [here](https://github.com/settings/applications/new).
+2. You need to set up a [github-secret-keeper](https://github.com/HenrikJoreteg/github-secret-keeper#setting-it-up-on-heroku) and follow the instructions provided in there.
+
+### Development
+1. `git clone git@github.com:roopemerikukka/github-issue-board.git`
+2. `cd github-issue-board`
+3. `yarn`
+4. Add the address of your `github-secret-keeper` app to `package.json` in here:
+```json
+"github-issue-board": {
+  "secret-keeper-url": "https://your-secrets-app.herokuapp.com"
+}
+```
+4. Configure the start script with your client IDs:
+```json
+"start": "REACT_APP_DEV=<YOUR-CLIENT-ID> react-scripts start"
+```
 
 ## Screenshots
 
