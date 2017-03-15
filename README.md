@@ -4,7 +4,7 @@ Github issue board is a dashboard where you can see all of your open issues on o
 
 ## Usage
 
-The application is hosted [here](#) and you can start using it straight away! The application doesn't record any of your personal GitHub data, but only uses minimal parts of it to show your issues. All data is stored on your browsers local storage.
+The application is hosted [here](https://issues.roo.pe) and you can start using it straight away. The routing doesn't still work with full page refreshes on subroutes. The application doesn't record any of your personal GitHub data, but only uses minimal parts of it to show your issues. All data is stored on your browsers local storage.
 
 ## Development
 
