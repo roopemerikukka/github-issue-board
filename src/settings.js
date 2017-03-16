@@ -8,8 +8,8 @@ export const LOCAL_STORAGE_KEY = packageSettings['local-storage-key'] || 'github
 
 const CLIENT_ID = process.env.REACT_APP_CLIEND_ID
 
-export const REPOSITORY_UPDATE_INTERVAL = 300000 // 5min
-// export const REPOSITORY_UPDATE_INTERVAL = 60000 // 1min
+// export const REPOSITORY_UPDATE_INTERVAL = 300000 // 5min
+export const REPOSITORY_UPDATE_INTERVAL = 60000 // 1min
 
 export function getClientId () {
   return CLIENT_ID
