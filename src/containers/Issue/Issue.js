@@ -16,7 +16,9 @@ export default ({ issue }) => {
         <div><span className='hash'>#</span>{issue.number}</div>
       </div>
       <div className='issue__content'>
-        <h2 className='issue__title'>{issue.title}</h2>
+        <h2 className='issue__title'>
+          <a href={issue.url}>{issue.title}</a>
+        </h2>
         <ul className='issue__labels'>
           { issue.labels.map(label => {
             return (

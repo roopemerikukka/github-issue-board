@@ -61,6 +61,11 @@
       margin: 0;
     }
 
+    .issue__title a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .issue__labels {
       list-style: none;
       margin: 0;
