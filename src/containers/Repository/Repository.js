@@ -4,7 +4,9 @@ import './Repository.css'
 
 export default ({ repo }) => (
   <div className='repository'>
-    <h1 className='repository__name' >{repo.name}</h1>
+    <h1 className='repository__name' >
+      <a href={repo.html_url}>{repo.name}</a>
+    </h1>
     <ul className='issuelist'>
       { repo.issues.map(issue => {
         return (
