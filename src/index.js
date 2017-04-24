@@ -39,7 +39,8 @@ const enhancer = composeEnhancers(
 )
 
 // Check if there is already a store in localStorage.
-const persistedState = window.localStorage.getItem(LOCAL_STORAGE_KEY) ? JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) : {}
+// const persistedState = window.localStorage.getItem(LOCAL_STORAGE_KEY) ? JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) : {}
+const persistedState = []
 
 const store = createStore(reducer, persistedState, enhancer)
 
