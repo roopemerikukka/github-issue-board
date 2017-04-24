@@ -1,0 +1,25 @@
+.toggle-repo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toggle-repo-list__item {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 24px;
+  padding: 12px;
+  width: 100%;
+}
+
+.toggle-repo-list__item li {
+  list-style: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .toggle-repo-list__item {
+      width: 50%;
+    }
+  }
