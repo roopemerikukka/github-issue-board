@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import { checkStatus, parseLinkHeader } from '../helpers'
+import { checkStatus, parseLinkHeader, devlog } from '../helpers'
 import { REPOSITORY_UPDATE_INTERVAL } from '../settings'
 
 export const REQUEST_REPOSITORIES = 'REQUEST_REPOSITORIES'
@@ -8,6 +8,7 @@ export const RECEIVE_REPOSITORIES = 'RECEIVE_REPOSITORIES'
 export const RECEIVE_UPDATE_REPOS = 'RECEIVE_UPDATE_REPOS'
 export const INVALIDATE_REPOS = 'INVALIDATE_REPOS'
 export const RECEIVED_ALL_REPOS = 'RECEIVED_ALL_REPOS'
+export const RESET_REPOSITORY_FETCH = 'RESET_REPOSITORY_FETCH'
 
 const requestRepositories = () => {
   return {
@@ -26,6 +27,12 @@ const receivedAllRepos = () => {
   return {
     type: RECEIVED_ALL_REPOS,
     data: Date.now()
+  }
+}
+
+const stopRepositoryFetch = () => {
+  return {
+    type: RESET_REPOSITORY_FETCH
   }
 }
 
@@ -117,23 +124,40 @@ const fetchRepositories = (state, page) => {
           dispatch(receivedAllRepos())
         }
       })
-      .catch(error => console.error('Failed fetching repositories', error))
+      .catch(error => {
+        console.error('Failed fetching repositories', error)
+        // Invalidate repositories if the fetch fails.
+        // This can happen if the application is fetching repos and the network connection drops.
+        dispatch(stopRepositoryFetch())
+      })
   }
 }
 
 const shouldFetch = (state) => {
-  let { isFetching } = state.repositories
-  if (isFetching) {
+  devlog('Testing if should fetch repositories')
+  let { isFetching, hydrated } = state.repositories
+  let { online } = state.uistate
+
+  if (isFetching || hydrated || !online) {
     return false
   } else {
+    devlog('Starting to fetch repos')
     return true
   }
 }
 
 const shouldUpdate = (state) => {
+  devlog('Testing if should update repos')
   let { isFetching, hydrated, reposLastUpdated, updateOnProgress } = state.repositories
+  let { online } = state.uistate
 
   if (updateOnProgress) {
+    devlog('Update on progress')
+    return false
+  }
+
+  if (!online) {
+    devlog('Not online')
     return false
   }
 
@@ -142,6 +166,7 @@ const shouldUpdate = (state) => {
   if (isFetching || !hydrated || !timePassed) {
     return false
   } else {
+    devlog('Starting to update repos')
     return true
   }
 }

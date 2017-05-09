@@ -2,7 +2,8 @@ import {
 REQUEST_REPOSITORIES,
 RECEIVE_REPOSITORIES,
 INVALIDATE_REPOS,
-RECEIVED_ALL_REPOS
+RECEIVED_ALL_REPOS,
+RESET_REPOSITORY_FETCH
 } from '../actions/Repositories'
 
 export const initialState = {
@@ -36,6 +37,13 @@ const repositories = (state = initialState, action) => {
         reposLastUpdated: action.data,
         data: [...state.tempData],
         tempData: []
+      }
+    case RESET_REPOSITORY_FETCH:
+      return {
+        ...state,
+        isFetching: false,
+        updateOnProgress: false,
+        reposLastUpdated: -1
       }
     case INVALIDATE_REPOS:
       return initialState

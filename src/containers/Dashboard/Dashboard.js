@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import { Icon } from 'react-fa'
 import Masonry from 'react-masonry-component'
 import Repository from '../Repository/Repository'
-import { updateReposIfNeeded } from '../../actions/Repositories'
+import { updateReposIfNeeded, fetchRepositoriesIfNotBusy } from '../../actions/Repositories'
 import AutoScroll from '../../components/AutoScroll/AutoScroll'
 import './Dashboard.css'
 
 export class Dashboard extends Component {
-
   componentDidMount () {
     let { dispatch } = this.props
     setInterval(() => {
       dispatch(updateReposIfNeeded())
+      dispatch(fetchRepositoriesIfNotBusy())
     }, 500)
   }
 
