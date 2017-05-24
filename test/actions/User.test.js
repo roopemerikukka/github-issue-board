@@ -38,7 +38,6 @@ describe('User actions', () => {
 
     return store.dispatch(actions.fetchUserInformationIfNeeded())
       .then(() => {
-        console.log(store.getActions())
         expect(store.getActions()).toEqual(expectedActions)
       })
   })

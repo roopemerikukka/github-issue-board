@@ -55,6 +55,39 @@ describe('Repositories actions', () => {
     expect(actions.invalidateRepos()).toEqual(expectedAction)
   })
 
+  test('Should continue fetching is update is on progress', () => {
+    // Mock the repo fetch
+    nock(`https://api.github.com`)
+      .defaultReplyHeaders({
+        'Link': ''
+      })
+      .get(`/user/repos?access_token=abc&page=2`)
+      .reply(200, mockRepos)
+
+    // Mock the issue fetch
+    nock(`https://api.github.com`)
+      .get(`/repos/${mockRepos[0].full_name}/issues?access_token=abc`)
+      .reply(200, [{}])
+
+    const store = mockStore({
+      repositories: {
+        isFetching: false,
+        updateOnProgress: true
+      },
+      uistate: {
+        online: true
+      },
+      user: {
+        accessToken: 'abc'
+      }
+    })
+
+    return store.dispatch(actions.fetchRepositoriesIfNotBusy(2))
+      .then(() => {
+        console.log(store.getActions())
+      })
+  })
+
   test('receives repositories if should fetch', () => {
     // Mock the repo fetch
     nock(`https://api.github.com`)
@@ -71,7 +104,11 @@ describe('Repositories actions', () => {
 
     const store = mockStore({
       repositories: {
-        isFetching: false
+        isFetching: false,
+        updateOnProgress: false
+      },
+      uistate: {
+        online: true
       },
       user: {
         accessToken: 'abc'

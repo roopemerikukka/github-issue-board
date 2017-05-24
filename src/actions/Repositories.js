@@ -104,9 +104,8 @@ const fetchRepositories = (state, page) => {
       .then(response => {
         // Get the link headers.
         links = parseLinkHeader(response.headers.get('Link'))
-        return response
+        return response.json()
       })
-      .then(response => response.json())
       .then(json => {
         // Map the json to more relevant object.
         let repos = mapRepositories(json)
@@ -116,7 +115,6 @@ const fetchRepositories = (state, page) => {
       })
       .then(repos => {
         dispatch(receiveRepositories(repos))
-
         // Check if we need to fetch more?
         if ('next' in links) {
           dispatch(fetchRepositoriesIfNotBusy(page + 1))
@@ -134,11 +132,11 @@ const fetchRepositories = (state, page) => {
 }
 
 const shouldFetch = (state) => {
-  devlog('Testing if should fetch repositories')
   let { isFetching, hydrated } = state.repositories
-  let { online } = state.uistate
+  let { loggedIn } = state.user
+  let online = window.navigator.onLine
 
-  if (isFetching || hydrated || !online) {
+  if (isFetching || hydrated || !online || !loggedIn) {
     return false
   } else {
     devlog('Starting to fetch repos')
@@ -147,23 +145,21 @@ const shouldFetch = (state) => {
 }
 
 const shouldUpdate = (state) => {
-  devlog('Testing if should update repos')
   let { isFetching, hydrated, reposLastUpdated, updateOnProgress } = state.repositories
-  let { online } = state.uistate
+  let { loggedIn } = state.user
+  let online = window.navigator.onLine
 
   if (updateOnProgress) {
-    devlog('Update on progress')
     return false
   }
 
   if (!online) {
-    devlog('Not online')
     return false
   }
 
   let now = Date.now()
   let timePassed = now > reposLastUpdated + REPOSITORY_UPDATE_INTERVAL
-  if (isFetching || !hydrated || !timePassed) {
+  if (isFetching || !hydrated || !timePassed || !loggedIn) {
     return false
   } else {
     devlog('Starting to update repos')

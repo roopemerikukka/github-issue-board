@@ -6,7 +6,6 @@ import { getClientId } from '../../settings'
 import Header from '../Header/Header'
 
 export class App extends Component {
-
   onLoginClick (e) {
     e.preventDefault()
     let clientId = getClientId()

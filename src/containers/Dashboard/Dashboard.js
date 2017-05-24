@@ -9,11 +9,13 @@ import './Dashboard.css'
 
 export class Dashboard extends Component {
   componentDidMount () {
-    let { dispatch } = this.props
-    setInterval(() => {
-      dispatch(updateReposIfNeeded())
-      dispatch(fetchRepositoriesIfNotBusy())
-    }, 500)
+    let { dispatch, loggedIn } = this.props
+    if (loggedIn) {
+      setInterval(() => {
+        dispatch(updateReposIfNeeded())
+        dispatch(fetchRepositoriesIfNotBusy())
+      }, 1000)
+    }
   }
 
   shouldShowRepo (repo) {
@@ -61,7 +63,8 @@ const mapStateToProps = (state, router) => {
     repositories: state.repositories.data,
     disabledRepos: state.uistate.disabledRepos,
     router: router,
-    autoScrollEnabled: state.uistate.autoScroll
+    autoScrollEnabled: state.uistate.autoScroll,
+    loggedIn: state.user.loggedIn
   }
 }
 

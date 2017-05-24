@@ -21,6 +21,7 @@ const repositories = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
+        hydrated: false,
         updateOnProgress: true
       }
     case RECEIVE_REPOSITORIES:
@@ -43,7 +44,8 @@ const repositories = (state = initialState, action) => {
         ...state,
         isFetching: false,
         updateOnProgress: false,
-        reposLastUpdated: -1
+        reposLastUpdated: -1,
+        tempData: []
       }
     case INVALIDATE_REPOS:
       return initialState
