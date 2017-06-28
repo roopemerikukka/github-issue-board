@@ -33,7 +33,6 @@
   },
   "scripts": {
     "start": "REACT_APP_CLIEND_ID=eb1a6328e1aa75db79ed react-scripts start",
-    "build": "react-scripts build",
     "build:stage": "REACT_APP_CLIEND_ID=f7385982795e14b27290 react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:cov": "yarn test -- --coverage",

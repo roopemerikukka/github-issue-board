@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component'
 import Repository from '../Repository/Repository'
 import { updateReposIfNeeded, fetchRepositoriesIfNotBusy } from '../../actions/Repositories'
 import AutoScroll from '../../components/AutoScroll/AutoScroll'
+import LastUpdateTimestamp from '../../components/LastUpdateTimestamp/LastUpdateTimestamp'
 import './Dashboard.css'
 
 export class Dashboard extends Component {
@@ -42,7 +43,7 @@ export class Dashboard extends Component {
   }
 
   render () {
-    const { autoScrollEnabled } = this.props
+    const { autoScrollEnabled, updateTimestamp } = this.props
     let repos = this.getRepoList()
     return (
       <div>
@@ -52,6 +53,7 @@ export class Dashboard extends Component {
         >
           {repos}
         </Masonry>
+        <LastUpdateTimestamp timestamp={updateTimestamp} />
         <AutoScroll active={autoScrollEnabled} />
       </div>
     )
@@ -61,6 +63,7 @@ export class Dashboard extends Component {
 const mapStateToProps = (state, router) => {
   return {
     repositories: state.repositories.data,
+    updateTimestamp: state.repositories.reposLastUpdated,
     disabledRepos: state.uistate.disabledRepos,
     router: router,
     autoScrollEnabled: state.uistate.autoScroll,
