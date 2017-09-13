@@ -45,6 +45,14 @@
     background-color: #2ecc71;
   }
 
+  .issue--pr .issue__number {
+    background-color: rgba(111, 66, 193, 0.5);
+  }
+
+  .issue--assigned.issue--pr .issue__number {
+    background-color: rgba(111, 66, 193, 1);;
+  }
+
   .issue__number div {
     position: absolute;
     top: 50%;

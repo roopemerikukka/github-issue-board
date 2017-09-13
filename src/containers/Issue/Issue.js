@@ -7,7 +7,8 @@ import './Issue.css'
 export default ({ issue }) => {
   let issueClassName = classNames({
     'issue': true,
-    'issue--assigned': issue.assignees.length > 0
+    'issue--assigned': issue.assignees.length > 0,
+    'issue--pr': ('pull_request' in issue)
   })
 
   return (
